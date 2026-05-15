@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "WebFetch(domain:mineru.readthedocs.io)",
+      "WebFetch(domain:opendatalab.github.io)",
+      "Bash(python scripts/01_pdf_to_markdown.py --help)",
+      "Bash(python scripts/02_markdown_to_context.py --help)",
+      "Bash(python scripts/01_pdf_to_markdown.py --software dakota --dry-run)",
+      "Bash(python scripts/02_markdown_to_context.py --software dakota --dry-run)"
+    ]
+  }
+}

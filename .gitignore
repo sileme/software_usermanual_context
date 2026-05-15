@@ -1,0 +1,26 @@
+# Pipeline I/O — large and fully reproducible from corpus/raw + scripts.
+# Only context_layer/ is committed.
+corpus/
+
+# Model self-use working notes. Removed at the end of each dev cycle.
+.agent/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.local
+
+# minerU local model / cache
+.mineru_cache/
+models/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
