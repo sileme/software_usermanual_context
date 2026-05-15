@@ -82,6 +82,13 @@ def parse_args() -> argparse.Namespace:
         help="API engine only: max seconds to wait for a batch. Default: 1800 (30 min).",
     )
     parser.add_argument(
+        "--max-pages-per-file",
+        type=int,
+        default=200,
+        help="API engine only: pre-split PDFs longer than this many pages "
+             "(minerU API caps at 200/file). Set to 0 to disable splitting. Default: 200.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Print what would run without invoking minerU.",
@@ -127,7 +134,8 @@ def main() -> int:
     if args.engine == "api":
         from lib.mineru_api import MineruAPIError, run_api_pipeline
         model = "pipeline" if args.backend == "pipeline" else "vlm"
-        print(f"[info] engine=api model_version={model} count={len(pdfs)}")
+        print(f"[info] engine=api model_version={model} count={len(pdfs)} "
+              f"max_pages_per_file={args.max_pages_per_file}")
         try:
             return run_api_pipeline(
                 pdfs,
@@ -135,6 +143,7 @@ def main() -> int:
                 model_version=model,
                 poll_interval=args.poll_interval,
                 timeout=args.timeout,
+                max_pages_per_file=args.max_pages_per_file,
             )
         except MineruAPIError as exc:
             print(f"[error] minerU API: {exc}", file=sys.stderr)

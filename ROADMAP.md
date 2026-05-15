@@ -17,7 +17,23 @@
 ## Currently Working On
 
 <!-- BEGIN: currently-working-on -->
-（无活跃工作。下一个 milestone 接手时按本节末尾的"进度更新流程"填回。）
+**M1 — 首批入库：dakota + sentaurus PDF→markdown（进行中）**
+
+目标：跑通 `scripts/01_pdf_to_markdown.py --engine api`，把 `corpus/raw/dakota/*.pdf`（1 份，4 MB）和 `corpus/raw/sentaurus/*.pdf`（30 份，77 MB）都转成 `corpus/markdown/<software>/<doc>/auto/<doc>.md` + `<doc>_content_list.json`。这是 M1 流水线的上半段；下半段（`02_markdown_to_context.py` 生成 `module_map.md` / `provenance.json`）依赖 `scripts/lib/heading_tree.py` 和 `provenance.py` 的 stub 实装，本轮不一起做。
+
+子任务：
+
+1. **conda 环境验证**：在 `mineru_env` 下确认 Python 可用、`MINERU_API_TOKEN` 可注入环境变量。
+2. **dakota 试水**：1 份 PDF 走完整 API 链路（请求预签名 URL → PUT 上传 → 轮询 → 下载 zip → 解压）。验证 `mineru_api.py` 行为符合 mineru.net v4 API 现状。
+3. **bug 修复**（按需）：若试水失败，根据 stderr 修 `scripts/lib/mineru_api.py` 或 `scripts/01_pdf_to_markdown.py`，记录在 commit message 里。
+4. **sentaurus 批量**：30 份 PDF 投递；若单 batch 超出 timeout 则分批（按文件大小三档：< 1 MB / 1–5 MB / > 5 MB）。
+5. **抽查**：随机抽 2–3 份 markdown，确认章节结构、表格、公式没被吞。
+6. **闭环**：成功后把 `Currently Working On` 区清空，M1 在 Milestones 打勾，新增"M1 PDF→markdown 完成"日志。
+
+非目标（推到下一轮）：
+- `lib/heading_tree.py` / `provenance.py` stub 实装（M1 下半段）
+- `context_layer/*/{task_cards,syntax,diagnostics}/_TODO.md` 之外的内容生成（M2）
+- pipeline 模型 vs vlm 模型的对比评估（按需）
 <!-- END: currently-working-on -->
 
 ## Backlog

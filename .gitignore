@@ -18,9 +18,7 @@ venv/
 .mineru_cache/
 models/
 
-# IDE / OS
-.idea/
-.vscode/
-*.swp
-.DS_Store
-Thumbs.db
+# Claude Code per-user permission cache.
+# settings.local.json can capture full command lines, including any inline
+# secrets (API tokens etc.) — keep it out of git.
+.claude/settings.local.json

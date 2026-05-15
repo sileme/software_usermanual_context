@@ -167,7 +167,11 @@ def main() -> int:
             print(f"[error] {doc_dirs[0]} not found.", file=sys.stderr)
             return 2
     else:
-        doc_dirs = sorted(p for p in md_dir.iterdir() if p.is_dir())
+        # Skip dotfile-prefixed dirs like ".parts/" (per-PDF split working area).
+        doc_dirs = sorted(
+            p for p in md_dir.iterdir()
+            if p.is_dir() and not p.name.startswith(".")
+        )
 
     if not doc_dirs:
         print(f"[error] no doc subdirectories under {md_dir}", file=sys.stderr)
