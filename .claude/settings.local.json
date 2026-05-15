@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"d:/ASILEM/AI4TID/dakota4sentaurus/software_usermanual_context\" log --oneline -5)",
+      "Bash(cd \"d:/ASILEM/AI4TID/dakota4sentaurus/software_usermanual_context\" && mkdir -p corpus/raw/dakota corpus/raw/sentaurus corpus/md/dakota corpus/md/sentaurus context_layer/dakota context_layer/sentaurus scripts tests .claude/skills/software-manual-context/task_cards .claude/skills/software-manual-context/syntax .claude/skills/software-manual-context/diagnostics)"
+    ],
+    "additionalDirectories": [
+      "d:\\ASILEM\\AI4TID\\dakota4sentaurus\\software_usermanual_context\\.claude\\skills\\software-manual-context"
+    ]
+  }
+}
