@@ -1,6 +1,5 @@
 # software_usermanual_context
 
-<<<<<<< HEAD
 把工程软件的官方 user manual 转成 **Claude Code 可按需加载的背景知识层**——不熟悉该软件的人也能通过对话查询用法、理解参数、生成脚本，而不用从头读几百页 PDF。
 
 当前已规划：
@@ -112,6 +111,4 @@ software_usermanual_context/
 - 想加新软件：照 [docs/add_new_software.md](docs/add_new_software.md) 做
 - 想改 SKILL/CLAUDE 规则：先在 issue 里讨论；特别是「资料中无相关内容」拒答字符串不要随意改
 - 开发进度：[ROADMAP.md](ROADMAP.md) 的 "Currently Working On" 块
-=======
-将复杂软件的 User Manual 转化为 Claude Code 可按需加载的背景知识层（Context Layer），使不熟悉该软件的人也能通过 Claude Code 查询功能、理解用法、生成配置/脚本，并逐步辅助软件自动调度与多软件耦合开发。
->>>>>>> 16d756e864dc2773733c57f2a46b13a4abc8250d
+- 开发成MCP server

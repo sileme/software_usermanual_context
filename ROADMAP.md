@@ -12,7 +12,7 @@
 - [ ] **M1 — 首批入库**：dakota + sentaurus 跑通 PDF→markdown→`context_layer/` 的自动产物（`index.md`/`module_map.md`/`provenance.json`）
 - [ ] **M2 — 任务卡半自动**：实现 `scripts/03_curate.py`，对每份 doc 半自动生成 `task_cards/`、`syntax/`、`diagnostics/` 草稿
 - [ ] **M3 — 反馈接入**：把网络搜集、issue tracker、社区帖子、个人调试记录归并进 `context_layer/<software>/feedback/`
-- [ ] **M4 — 框架适配**：MCP server 暴露、RAG 索引、其他 agent 框架（Cursor/Aider）适配
+- [ ] **M4 — 框架适配**：MCP server 暴露（让 Cursor / Continue / 其他 IDE 也能用同一份 `context_layer/`）、RAG 索引、其他 agent 框架适配
 
 ## Currently Working On
 
@@ -24,12 +24,14 @@
 
 下面这些尚未排上 milestone，按用户需求决定优先级。
 
+- **MCP server 化**：把 SKILL 的"读 context_layer 然后回答 + 拒答规则"包装成 MCP server，让非 Claude Code 客户端（Cursor、Continue、Cline、Zed AI 等）也能复用同一份 `context_layer/`。属 M4 范畴，但优先级建议提前——一旦 M2 任务卡填好，MCP 化的边际收益就显现。
 - 单元测试：`scripts/lib/heading_tree.py` 与 `provenance.py` 实现后补 `tests/`（pytest fixtures 用一个 1 页的小 PDF）
 - `Makefile` 或 `justfile`：把 `01 → 02 → git add` 串成一条命令
 - 多语言手册支持：当前 `--lang` 写死英文；中文/日文手册要看 minerU OCR 表现
 - `context_layer/` 的版本化：手册升级（dakota 6.16 → 6.17）时如何 diff、是否双版本并存
 - Skill 输出引用页码后，加一个 `scripts/verify_provenance.py` 校验 SKILL 回答里所有 `[<doc>.pdf p.<n>]` 都能在 `provenance.json` 里命中
 - 把 SKILL.md 的 "Registered software" 列表自动从 `context_layer/*/index.md` 生成，避免手抖
+- API 调用费用 / 配额监控：`scripts/01_pdf_to_markdown.py --engine api` 走云端 API 时，记录每次 batch 的页数和耗时到 `corpus/.api_log.jsonl`（gitignored），便于事后看花了多少
 
 ## 工程约定
 

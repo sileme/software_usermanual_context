@@ -8,7 +8,9 @@
       "Bash(python scripts/01_pdf_to_markdown.py --help)",
       "Bash(python scripts/02_markdown_to_context.py --help)",
       "Bash(python scripts/01_pdf_to_markdown.py --software dakota --dry-run)",
-      "Bash(python scripts/02_markdown_to_context.py --software dakota --dry-run)"
+      "Bash(python scripts/02_markdown_to_context.py --software dakota --dry-run)",
+      "WebFetch(domain:mineru.net)",
+      "Bash(python scripts/01_pdf_to_markdown.py --software dakota --engine api --dry-run)"
     ]
   }
 }
